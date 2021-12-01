@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    outline: none;
+    text-decoration: none;
+    outline: none;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+ol, 
+ul, 
+li {
+    list-style: none;
+    display: block;
+}
+  
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+  
+a img {
+    border: none;
+}
+  
+button, 
+a {
+    cursor: pointer; 
+    color: inherit;
+}
+  
+textarea {
+    resize: none;
+}
+  
+button, 
+input, 
+textarea, 
+select {
+    appearance: none !important; 
+    -webkit-appearance: none !important; 
+    border-radius: 0;
+}
+
+/* CSS-Reset end */
+
+body {
+    font-family: 'Varela Round', sans-serif;
+}
+
+#root {
+    position: relative;
+    margin: 20px;
+    padding: 20px;
+    width: 30vw;
+    background-color: whitesmoke;
+
+    border: 1px dotted turquoise;
+    border-radius: 5px;
+
+    font-size: 25px;
+    font-weight: 500;
+   
+ 
+
+}
+
+form {
+    margin: 20px;
+  
+    left: 0;
+    font-size: 15px;
+}
+
+form input {
+    margin: 10px;
+    background-color: rgb(221, 233, 232);
+    border: 1px solid rgb(163, 235, 227);
+    border-radius: 5px;
+    font-weight: 400;
+  
+}
+
+button {
+
+    margin: 10px;
+    border: 1px solid rgb(163, 235, 227);
+    border-radius: 5px;
+    background-color: rgb(223, 233, 232);
+
+    width: 60px;
+    height: 30px;
+
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+}
+
+select {
+    font-size: 10px;
+}
