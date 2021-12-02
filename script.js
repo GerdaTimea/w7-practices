@@ -22,16 +22,25 @@ functionName();
 
 */
 
-const inputElement = (type, name, label) => {
+const inputElement = (type, name, id, label) => {
     return `
         <div>
-            <label>${label}</label></br>
-            <input type="${type}" name="${name}">
+            <label for="${id}">${label}</label></br>
+            <input type="${type}" name="${name}" id="${id}" >
         </div>
     `
 }
 
-const selectElement = (type, name, label, selectOptions) => {
+const checkboxElement = (type, name, id, label) => {
+    return `
+        <div>
+            <input type="${type}" name="${name}" id="${id}">
+            <label for="${id}">${label}</label>
+        </div>
+    `
+}
+
+const selectElement = (type, name, id, label, selectOptions) => {
     
     // lehet létrehozni: let-tel (nem const) - változni fog a tartalma
     let optionElements = "";
@@ -44,8 +53,8 @@ const selectElement = (type, name, label, selectOptions) => {
     
     return `
         <div>
-            <label>${label}</label>
-            <${type} name="${name}">
+            <label for="${id}">${label}</label>
+            <${type} name="${name}" id="${id}">
                 ${optionElements}
             </${type}>
         </div>
@@ -58,12 +67,12 @@ const formElement = '<form id="form">' + inputElement("text", "firstName", "Kere
 
 const formElement =  `
     <form id="form">
-        ${ inputElement("text", "firstName", "Keresztneved") }
-        ${ inputElement("file", "profilePicture", "Profilképed") }
-        ${ inputElement("email", "personalEmail", "Email címed") }
-        ${ inputElement("checkbox", "newsletter", "Szeretnél-e hírlevelet kapni?") }
-        ${ inputElement("checkbox", "terms", "Elfogadod-e a felhasználási feltételeket?") }
-        ${ selectElement("select", "where", "Hol hallottál rólunk?", ["internetről", "ismerőstől", "egyéb"]) }
+        ${ inputElement("text", "firstName", "firstName", "Keresztneved*") }
+        ${ inputElement("file", "profilePicture", "profilePicture", "Profilképed") }
+        ${ inputElement("email", "personalEmail", "personalEmail", "Email címed*") }
+        ${ checkboxElement("checkbox", "newsletter", "newsletter", "Szeretnél-e hírlevelet kapni?") }
+        ${ checkboxElement("checkbox", "terms", "terms", "Elfogadod-e a felhasználási feltételeket?*") }
+        ${ selectElement("select", "where", "where", "Hol hallottál rólunk?", ["internetről", "ismerőstől", "egyéb"]) }
         <button>OK</button>
     </form>
 `;
@@ -78,26 +87,39 @@ const formSubmit = (event) => {
 }
 
 const inputEvent = (event) => {
-    // console.log(event.target.value);
-    console.log(event.target.name);
     console.log(event);
+    // console.log(event.target.value);
     // document.getElementById("inputValueContent").innerHTML = event.target.value;
+
     const fName = document.querySelector(`input[name="firstName"]`);
     const tryForm = event.target.closest("#form");
     console.log(tryForm);
 
-    if (event.target.getAttribute("name") === "firstName") {
-        document.getElementById("inputValueContent").innerHtml = event.target.value;
+    console.log(event.target.name);
+    // if (event.target.getAttribute("name") === "firstName")
+    if (event.target.name === "firstName") {
+        document.getElementById("inputValueContent")
+            .innerHTML = event.target.value;
     }
 }
 
 function loadEvent() {
     const root = document.getElementById("root");
-    root.innerText = "Regisztráció";
+
+    root.insertAdjacentHTML("afterbegin", `
+        <div id="registration">Regisztráció</div>
+    `)
+  
     root.insertAdjacentHTML("beforeend", formElement);
-    root.insertAdjacentHTML("beforeend", `
+
+    /* root.insertAdjacentHTML("beforeend", `
         <div id="inputValueContent"></div>
     `);
+    */
+
+    root.insertAdjacentHTML("beforeend", `
+        <span class="required">(A *-gal jelölt mezők kitöltése kötelező.)</span>
+    `)
 
     const form = document.getElementById("form");
     form.addEventListener("submit", formSubmit);
@@ -109,3 +131,4 @@ function loadEvent() {
 }
 
 window.addEventListener("load", loadEvent);
+

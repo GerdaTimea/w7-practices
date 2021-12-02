@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    border: 0;
     background: transparent;
     outline: none;
     text-decoration: none;
@@ -35,15 +34,6 @@ a {
 textarea {
     resize: none;
 }
-  
-button, 
-input, 
-textarea, 
-select {
-    appearance: none !important; 
-    -webkit-appearance: none !important; 
-    border-radius: 0;
-}
 
 /* CSS-Reset end */
 
@@ -53,52 +43,93 @@ body {
 
 #root {
     position: relative;
+    width: 40vw;
     margin: 20px;
-    padding: 20px;
-    width: 30vw;
+    padding: 30px;
+        
     background-color: whitesmoke;
+    border: 1px solid turquoise;
+    border-radius: 5%;
+    box-shadow: 5px 5px lightgrey;
+}
 
-    border: 1px dotted turquoise;
-    border-radius: 5px;
-
+#registration {
     font-size: 25px;
     font-weight: 500;
-   
- 
-
 }
 
 form {
-    margin: 20px;
-  
-    left: 0;
-    font-size: 15px;
+    margin: 30px;
+    font-size: 20px;
+    font-weight: 400;
 }
 
-form input {
-    margin: 10px;
+form div {
+    margin-top: 20px;
+}
+
+input#firstName, input#profilePicture, input#personalEmail {
+    width: 70%;
+    margin: 10px 10px 10px 40px;
+    padding: 10px;
+
     background-color: rgb(221, 233, 232);
     border: 1px solid rgb(163, 235, 227);
     border-radius: 5px;
-    font-weight: 400;
-  
+
+    font-size:  20px;
+}
+
+input#profilePicture {
+    font-size: 15px;
+}
+
+input#newsletter, input#terms {
+   transform: scale(1.3);
+}
+
+label[for="newsletter"], label[for="terms"] {
+    padding-left: 10px;
+    font-size: 15px;
+    color: rgb(80, 79, 79);
+}
+
+label[for="where"] {
+    font-size: 15px;
+    color: rgb(80, 79, 79);
+}
+
+select {
+    width: 70%;
+    margin: 10px 10px 10px 40px;
+    padding: 5px;
+
+    background-color: rgb(221, 233, 232);
+    border: 1px solid rgb(163, 235, 227);
+    border-radius: 5px;
+
+    font-size:  15px;
+    color: rgb(80, 79, 79);
 }
 
 button {
+    width: 70px;
+    height: 30px;
+    margin-top: 30px;
+    margin-bottom: 20px;
 
-    margin: 10px;
+    background-color: rgb(199, 224, 222);
     border: 1px solid rgb(163, 235, 227);
     border-radius: 5px;
-    background-color: rgb(223, 233, 232);
+    box-shadow: 3px 3px lightgrey;
 
-    width: 60px;
-    height: 30px;
-
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 500;
     text-align: center;
 }
 
-select {
-    font-size: 10px;
+.required {
+    font-size:  15px;
+    color: rgb(80, 79, 79);
 }
+
